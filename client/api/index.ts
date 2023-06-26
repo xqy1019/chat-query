@@ -9,7 +9,7 @@ export const backendApi = axios.create({
 });
 
 (() => {
-  if (!sessionStorage.getItem("baseURL")) {
+  if (globalThis.sessionStorage && !sessionStorage.getItem("baseURL")) {
     const url = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001'
     axios.get((url) + "/schema/all").then(
         () => {
