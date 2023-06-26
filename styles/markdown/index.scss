@@ -1,0 +1,996 @@
+.message {
+  font-size: 16px;
+  position: relative;
+  z-index: 0
+}
+
+.message h1,
+.message h2,
+.message h3,
+.message h4,
+.message h5,
+.message h6,
+.message p {
+  margin: 1em 0
+}
+
+.message h1:first-child,
+.message h2:first-child,
+.message h3:first-child,
+.message h4:first-child,
+.message h5:first-child,
+.message h6:first-child,
+.message p:first-child {
+  margin-top: 0
+}
+
+.message h1:last-child,
+.message h2:last-child,
+.message h3:last-child,
+.message h4:last-child,
+.message h5:last-child,
+.message h6:last-child,
+.message p:last-child {
+  margin-bottom: 0
+}
+
+.message p {
+  line-height: 1.5
+}
+
+@media only screen and (max-width: 375px) {
+  .message p code {
+    word-break: break-all
+  }
+}
+
+.message ol,
+.message ul {
+  list-style-type: disc;
+  margin-bottom: 1.7em;
+  padding-left: 2.5em
+}
+
+@media only screen and (max-width: 768px) {
+
+  .message ol,
+  .message ul {
+    list-style-position: inside;
+    padding-left: 0
+  }
+}
+
+.message ol {
+  list-style-type: decimal
+}
+
+.message a {
+  border-bottom: 1px solid #0069ff;
+  color: #0069ff;
+  text-decoration: none;
+  transition: color .25s, border-bottom-color .25s
+}
+
+.message a:focus,
+.message a:hover {
+  border-bottom-color: #1253fa;
+  color: #1253fa
+}
+
+.message a code {
+  position: relative;
+  z-index: -1
+}
+
+.message blockquote {
+  border-left: 4px solid #d6dcea;
+  color: #8a96b5;
+  display: block;
+  font-size: 18px;
+  margin: 0 0 1.25em 1.25em;
+  padding: 0 0 0 1.5em
+}
+
+.message blockquote a {
+  border-bottom: 1px dotted #8a96b5;
+  color: #8a96b5
+}
+
+.message blockquote a:focus,
+.message blockquote a:hover {
+  border-bottom-style: solid
+}
+
+.message figure,
+.message img {
+  border: 2px solid #e3e8f4;
+  border-radius: 16px;
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%
+}
+
+.message img[align=left] {
+  float: unset;
+  margin-left: 0
+}
+
+.message img[align=right] {
+  float: unset;
+  margin-right: 0
+}
+
+.message figure {
+  overflow: hidden;
+  padding: 1rem
+}
+
+.message figure:has(img[align=left]) {
+  margin-left: 0;
+  width: -moz-fit-content;
+  width: fit-content
+}
+
+.message figure:has(img[align=right]) {
+  margin-right: 0;
+  width: -moz-fit-content;
+  width: fit-content
+}
+
+.message figure img {
+  border: none;
+  border-radius: 0;
+  margin: 0 auto
+}
+
+.message figure figcaption {
+  border-top: 1px solid #e3e8f4;
+  background: #eff2fb;
+  font-size: .9em;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem -1rem -1rem
+}
+
+.message code,
+.message pre {
+  background-color: #e3e8f4;
+  border-radius: 8px;
+  color: #24335a;
+  font-size: 14px;
+  line-height: 1.4em;
+  padding: 3px
+}
+
+.message pre {
+  background: #081b4b;
+  color: #fff;
+  border-radius: 16px;
+  display: block;
+  margin: 1em 0;
+  overflow: auto;
+  overflow-wrap: normal;
+  padding: 1em;
+  white-space: normal;
+  word-wrap: normal
+}
+
+.message pre code,
+.message pre.prefixed code ol li:before {
+  color: #fff
+}
+
+.message pre.prefixed.line_numbers code ol li:before {
+  border-right-color: hsla(0, 0%, 100%, .5)
+}
+
+.message pre code {
+  background: 0;
+  border-radius: 0;
+  color: inherit;
+  padding: 0;
+  white-space: pre
+}
+
+.message table {
+  border-collapse: collapse;
+  width: 100%
+}
+
+.message table thead tr {
+  border-bottom: 1px dashed #d6dcea
+}
+
+.message table thead tr th {
+  color: #081b4b;
+  font-weight: 600;
+  padding: 16px 8px
+}
+
+.message table tbody tr {
+  border-bottom: 1px solid #d6dcea
+}
+
+.message table tbody tr td {
+  color: #24335a;
+  padding: 24px 8px
+}
+
+.message table td:first-child,
+.message table th:first-child {
+  padding-left: 0
+}
+
+.message table td:last-child,
+.message table th:last-child {
+  padding-right: 0
+}
+
+.message .vimeo,
+.message .wistia,
+.message .youtube {
+  display: block;
+  height: auto;
+  margin: 1em auto;
+  max-width: 100%
+}
+
+.message .rsvp {
+  background: transparent;
+  border: 1px solid #0069ff;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #0069ff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 8px 24px;
+  transition: background .25s ease
+}
+
+.message .rsvp:disabled {
+  border-color: #aab3ca;
+  color: #aab3ca;
+  cursor: not-allowed
+}
+
+.message .rsvp:not(:disabled):focus,
+.message .rsvp:not(:disabled):hover {
+  background: #c8dfff
+}
+
+.message .terminal {
+  background: transparent;
+  border: 1px solid #0069ff;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #0069ff;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 8px 24px;
+  transition: background .25s ease
+}
+
+.message .terminal:disabled {
+  border-color: #aab3ca;
+  color: #aab3ca;
+  cursor: not-allowed
+}
+
+.message .terminal:not(:disabled):focus,
+.message .terminal:not(:disabled):hover {
+  background: #c8dfff
+}
+
+.message .columns {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: -1em
+}
+
+@media only screen and (max-width: 768px) {
+  .message .columns {
+    flex-flow: row wrap
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .message .columns {
+    flex-flow: column
+  }
+}
+
+.message .columns .column {
+  flex-basis: 100%;
+  flex-grow: 1;
+  padding: 1em
+}
+
+@media only screen and (max-width: 768px) {
+  .message .columns .column {
+    flex-basis: auto
+  }
+}
+
+.message details {
+  background: #f9fafe;
+  border-radius: 16px;
+  padding: 1em;
+  margin: 1em 0
+}
+
+.message details[open] summary {
+  border-bottom: 1px solid #e3e8f4;
+  padding: 0 1em 1em 0;
+  margin: 0 0 1em
+}
+
+.message details[open] summary:after {
+  top: calc(50% - 3px);
+  transform: translateY(-50%) rotate(225deg)
+}
+
+.message details summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0 1em 0 0;
+  position: relative
+}
+
+.message details summary::-webkit-details-marker,
+.message details summary::marker {
+  display: none
+}
+
+.message details summary:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border: solid #8a96b5;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-50%) rotate(45deg)
+}
+
+.message .twitter .twitter-tweet-rendered {
+  margin: 1rem auto
+}
+
+.message .twitter[align=left] {
+  float: unset
+}
+
+.message .twitter[align=left] .twitter-tweet-rendered {
+  margin-left: 0
+}
+
+.message .twitter[align=right] {
+  float: unset
+}
+
+.message .twitter[align=right] .twitter-tweet-rendered {
+  margin-right: 0
+}
+
+.message .instagram .instagram-media {
+  margin: 1rem auto !important
+}
+
+.message .instagram[align=left] .instagram-media {
+  margin-left: 0 !important
+}
+
+.message .instagram[align=right] .instagram-media {
+  margin-right: 0 !important
+}
+
+.message .slideshow {
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden
+}
+
+.message .slideshow .action {
+  background-color: hsla(0, 10%, 70%, .2);
+  border: 1px solid #666;
+  border-radius: 50%;
+  color: #666;
+  cursor: pointer;
+  font-size: 32px;
+  height: 30px;
+  line-height: 22px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 30px;
+  z-index: 10
+}
+
+.message .slideshow .action.left {
+  left: 10px
+}
+
+.message .slideshow .action.right {
+  right: 10px
+}
+
+.message .slideshow .action:hover {
+  background-color: hsla(0, 10%, 70%, .1);
+  border: 1px solid #ccc;
+  color: #ccc
+}
+
+.message .slideshow .slides {
+  display: flex;
+  overflow-x: auto;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch
+}
+
+.message .slideshow .slides>img {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 100px;
+  height: 100%;
+  justify-content: center;
+  margin-right: 50px;
+  scroll-snap-align: start;
+  position: relative;
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform .5s;
+  width: 100%
+}
+
+.message .hash-anchor {
+  border-bottom: none;
+  color: #8a96b5;
+  margin-right: .5em;
+  text-decoration: none
+}
+
+.message .hash-anchor:focus,
+.message .hash-anchor:hover {
+  color: #24335a
+}
+
+.message .hash-anchor:before {
+  content: "#"
+}
+
+.message mark {
+  background: rgba(242, 201, 76, .35);
+  border-radius: 8px;
+  color: inherit;
+  display: inline;
+  line-height: calc(1.4em + 1px);
+  padding: 0 2px
+}
+
+.message mark mark {
+  background: none;
+  border-radius: 0;
+  border-radius: initial;
+  line-height: 1.4em;
+  padding: initial
+}
+
+.message pre code mark {
+  background: rgba(65, 255, 244, .35)
+}
+
+.message pre code mark mark {
+  background: none
+}
+
+.message .callout {
+  background-color: #c8dfff;
+  border-radius: 16px;
+  color: #002c9b;
+  display: block;
+  font-size: 15px;
+  line-height: 1.5em;
+  margin: 0 0 1.5em;
+  padding: 1em 1.25em;
+  position: relative;
+  z-index: 0
+}
+
+.message .callout>:first-child {
+  margin-top: 0
+}
+
+.message .callout>:last-child {
+  margin-bottom: 0
+}
+
+.message .callout .callout-label {
+  background: rgba(0, 0, 0, .1);
+  border-radius: 16px 16px 0 0;
+  font-size: 15px;
+  margin: -1em -1.25em 0;
+  padding: .75em 1.25em;
+  text-align: center
+}
+
+.message .code-label {
+  background-color: #d6dcea;
+  border-radius: 16px 16px 0 0;
+  color: #24335a;
+  display: block;
+  font-size: 14px;
+  margin: 1em 0 0;
+  padding: .5em 1em;
+  position: relative;
+  text-align: center;
+  z-index: 2
+}
+
+.message .code-label+pre {
+  border-radius: 0 0 16px 16px;
+  margin: 0 0 1em
+}
+
+.message .code-label+.code-toolbar {
+  margin: 0 0 1em
+}
+
+.message .code-label+.code-toolbar pre {
+  border-radius: 0 0 16px 16px
+}
+
+.message pre.prefixed code {
+  white-space: normal
+}
+
+.message pre.prefixed code ol {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+.message pre.prefixed code ol li {
+  margin: 0;
+  padding: 0;
+  white-space: pre
+}
+
+.message pre.prefixed code ol li:before {
+  content: attr(data-prefix);
+  display: inline-block;
+  margin: 0 10px 0 5px;
+  text-align: right;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+.message pre.prefixed.line_numbers code ol li {
+  margin: 0 0 0 -5px
+}
+
+.message pre.prefixed.line_numbers code ol li:before {
+  border-right: 1px solid hsla(0, 0%, 100%, .5);
+  padding-right: 5px
+}
+
+.message pre[class*=language-]>code {
+  background: transparent
+}
+
+.message pre[class*=language-]>code .token.entity,
+.message pre[class*=language-]>code .token.operator,
+.message pre[class*=language-]>code .token.punctuation,
+.message pre[class*=language-]>code .token.url,
+.message pre[class*=language-]>code.language-css .token.string,
+.message pre[class*=language-]>code.style .token.string {
+  color: #eff2fb
+}
+
+.message pre[class*=language-]>code .token.cdata,
+.message pre[class*=language-]>code .token.comment,
+.message pre[class*=language-]>code .token.doctype,
+.message pre[class*=language-]>code .token.prolog {
+  color: #e3e8f4
+}
+
+.message pre[class*=language-]>code .token.atrule,
+.message pre[class*=language-]>code .token.builtin,
+.message pre[class*=language-]>code .token.char,
+.message pre[class*=language-]>code .token.constant,
+.message pre[class*=language-]>code .token.deleted,
+.message pre[class*=language-]>code .token.delimiter,
+.message pre[class*=language-]>code .token.inserted,
+.message pre[class*=language-]>code .token.keyword,
+.message pre[class*=language-]>code .token.property,
+.message pre[class*=language-]>code .token.selector,
+.message pre[class*=language-]>code .token.symbol,
+.message pre[class*=language-]>code .token.tag {
+  color: #4994ff
+}
+
+.message pre[class*=language-]>code .token.attr-name,
+.message pre[class*=language-]>code .token.boolean,
+.message pre[class*=language-]>code .token.color,
+.message pre[class*=language-]>code .token.string,
+.message pre[class*=language-]>code .token.variable {
+  color: #29e3ab
+}
+
+.message pre[class*=language-]>code .token.attr-value,
+.message pre[class*=language-]>code .token.class-name,
+.message pre[class*=language-]>code .token.function {
+  color: #ff4084
+}
+
+.message pre[class*=language-]>code .token.important,
+.message pre[class*=language-]>code .token.number,
+.message pre[class*=language-]>code .token.regex {
+  color: #00c6ff
+}
+
+.message pre[class*=language-]>code,
+.message pre[class*=language-]>code .token {
+  text-shadow: none
+}
+
+.message pre[class*=language-]>code.language-css .token.string,
+.message pre[class*=language-]>code.style .token.string {
+  background: none
+}
+
+.message pre[class*=language-]>code .token {
+  background: none;
+  border-radius: 0;
+  display: inline;
+  font-weight: 400;
+  margin: 0;
+  padding: 0
+}
+
+.message pre[class*=language-]>code .token.namespace {
+  opacity: .7
+}
+
+.message pre[class*=language-]>code .token.entity,
+.message pre[class*=language-]>code .token.operator,
+.message pre[class*=language-]>code .token.url {
+  background: none
+}
+
+.message pre[class*=language-]>code .token.bold,
+.message pre[class*=language-]>code .token.important {
+  font-weight: 700
+}
+
+.message pre[class*=language-]>code .token.italic {
+  font-style: italic
+}
+
+.message .code-toolbar {
+  margin: 1em 0;
+  position: relative
+}
+
+.message .code-toolbar>pre {
+  margin: 0
+}
+
+.message .code-toolbar>.toolbar {
+  position: absolute;
+  right: .2em;
+  top: .3em
+}
+
+.message .code-toolbar>.toolbar>.toolbar-item {
+  display: inline-block
+}
+
+.message .code-toolbar>.toolbar>.toolbar-item>a {
+  text-decoration: none
+}
+
+.message .code-toolbar>.toolbar>.toolbar-item>button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+.message .code-toolbar>.toolbar>.toolbar-item>a,
+.message .code-toolbar>.toolbar>.toolbar-item>button {
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  height: 24px;
+  padding: 0 8px;
+  transition: color .25s, background .25s;
+  width: auto
+}
+
+.message .code-toolbar>.toolbar>.toolbar-item>a:focus,
+.message .code-toolbar>.toolbar>.toolbar-item>a:hover,
+.message .code-toolbar>.toolbar>.toolbar-item>button:focus,
+.message .code-toolbar>.toolbar>.toolbar-item>button:hover {
+  background: #4994ff;
+  color: #000c2b
+}
+
+.message .code-toolbar>.toolbar>.toolbar-item>a:focus span,
+.message .code-toolbar>.toolbar>.toolbar-item>a:hover span,
+.message .code-toolbar>.toolbar>.toolbar-item>button:focus span,
+.message .code-toolbar>.toolbar>.toolbar-item>button:hover span {
+  color: #fff
+}
+
+.message .code-toolbar>.toolbar>.toolbar-item>a,
+.message .code-toolbar>.toolbar>.toolbar-item>button,
+.message .code-toolbar>.toolbar>.toolbar-item>span {
+  color: #24335a;
+  font-size: .9em;
+  margin: .5em;
+  padding: .1em 8px
+}
+
+.message pre code .secondary-code-label {
+  color: #00c6ff;
+  margin: 0 0 4px
+}
+
+.message .table-wrapper {
+  overflow-x: auto;
+  width: 100%
+}
+
+.message .image-compare {
+  position: relative
+}
+
+.message .image-compare .image-left,
+.message .image-compare .image-right {
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  position: absolute;
+  width: 100%
+}
+
+.message .image-compare .image-left {
+  -webkit-clip-path: polygon(0 0, var(--value) 0, var(--value) 100%, 0 100%);
+  clip-path: polygon(0 0, var(--value) 0, var(--value) 100%, 0 100%);
+  margin: 0
+}
+
+.message .image-compare .image-right {
+  -webkit-clip-path: polygon(100% 0, var(--value) 0, var(--value) 100%, 100% 100%);
+  clip-path: polygon(100% 0, var(--value) 0, var(--value) 100%, 100% 100%);
+  margin: 0
+}
+
+.message .image-compare .control-arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: calc(var(--value) - 13px);
+  color: #fff;
+  z-index: 90
+}
+
+.message .image-compare .control {
+  background-color: transparent;
+  box-sizing: border-box;
+  font-family: inherit;
+  height: 100%;
+  outline: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100
+}
+
+.message .image-compare .control::-moz-range-thumb {
+  background-color: #fff;
+  border: none;
+  cursor: ew-resize;
+  height: 100%;
+  width: 2px
+}
+
+.message .image-compare .control::-webkit-slider-thumb {
+  background-color: #fff;
+  border: none;
+  cursor: ew-resize;
+  height: 100%;
+  width: 2px
+}
+
+.message .image-compare .control::-moz-range-track {
+  background: transparent;
+  background-size: 100%;
+  box-sizing: border-box
+}
+
+.message .image-compare .control::-webkit-slider-runnable-track {
+  background: transparent;
+  background-size: 100%;
+  box-sizing: border-box;
+  height: 100%
+}
+
+.message .image-compare .control,
+.message .image-compare .control::-webkit-slider-runnable-track,
+.message .image-compare .control::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none
+}
+
+.message .callout.note {
+  background-color: #d4efee;
+  color: #005955
+}
+
+.message .callout.warning {
+  background-color: #ffe2e0;
+  color: #820800
+}
+
+.message .callout.info {
+  background-color: #c8dfff;
+  color: #002c9b
+}
+
+.message .callout.draft {
+  background-color: #ffc0ff;
+  color: #606
+}
+
+.message pre[class*=environment-]>code .token.entity,
+.message pre[class*=environment-]>code .token.operator,
+.message pre[class*=environment-]>code .token.punctuation,
+.message pre[class*=environment-]>code .token.url,
+.message pre[class*=environment-]>code.language-css .token.string,
+.message pre[class*=environment-]>code.style .token.string {
+  color: #aab3ca
+}
+
+.message pre[class*=environment-]>code .token.cdata,
+.message pre[class*=environment-]>code .token.comment,
+.message pre[class*=environment-]>code .token.doctype,
+.message pre[class*=environment-]>code .token.prolog {
+  color: #8a96b5
+}
+
+.message pre[class*=environment-]>code .token.atrule,
+.message pre[class*=environment-]>code .token.builtin,
+.message pre[class*=environment-]>code .token.char,
+.message pre[class*=environment-]>code .token.constant,
+.message pre[class*=environment-]>code .token.deleted,
+.message pre[class*=environment-]>code .token.delimiter,
+.message pre[class*=environment-]>code .token.inserted,
+.message pre[class*=environment-]>code .token.keyword,
+.message pre[class*=environment-]>code .token.property,
+.message pre[class*=environment-]>code .token.selector,
+.message pre[class*=environment-]>code .token.symbol,
+.message pre[class*=environment-]>code .token.tag {
+  color: #0069ff
+}
+
+.message pre[class*=environment-]>code .token.attr-name,
+.message pre[class*=environment-]>code .token.boolean,
+.message pre[class*=environment-]>code .token.color,
+.message pre[class*=environment-]>code .token.string,
+.message pre[class*=environment-]>code .token.variable {
+  color: #08966b
+}
+
+.message pre[class*=environment-]>code .token.attr-value,
+.message pre[class*=environment-]>code .token.class-name,
+.message pre[class*=environment-]>code .token.function {
+  color: #e0276a
+}
+
+.message pre[class*=environment-]>code .token.important,
+.message pre[class*=environment-]>code .token.number,
+.message pre[class*=environment-]>code .token.regex {
+  color: #225196
+}
+
+.message pre[class*=environment-] .secondary-code-label {
+  color: #081b4b
+}
+
+.message pre[class*=environment-] mark {
+  background: rgba(242, 201, 76, .35)
+}
+
+.message pre[class*=environment-] mark mark {
+  background: none
+}
+
+.message pre.environment-local {
+  background: #e3e8f4;
+  color: #4d5b7c
+}
+
+.message pre.environment-local code,
+.message pre.environment-local.prefixed code ol li:before {
+  color: #4d5b7c
+}
+
+.message pre.environment-local.prefixed.line_numbers code ol li:before {
+  border-right-color: rgba(77, 91, 124, .5)
+}
+
+.message pre.environment-second {
+  background: rgba(200, 223, 255, .5);
+  color: #002c9b
+}
+
+.message pre.environment-second code,
+.message pre.environment-second.prefixed code ol li:before {
+  color: #002c9b
+}
+
+.message pre.environment-second.prefixed.line_numbers code ol li:before {
+  border-right-color: rgba(0, 44, 155, .5)
+}
+
+.message pre.environment-third {
+  background: hsla(4, 100%, 94%, .5);
+  color: #820800
+}
+
+.message pre.environment-third code,
+.message pre.environment-third.prefixed code ol li:before {
+  color: #820800
+}
+
+.message pre.environment-third.prefixed.line_numbers code ol li:before {
+  border-right-color: rgba(130, 8, 0, .5)
+}
+
+.message pre.environment-fourth {
+  background: rgba(212, 239, 238, .5);
+  color: #005955
+}
+
+.message pre.environment-fourth code,
+.message pre.environment-fourth.prefixed code ol li:before {
+  color: #005955
+}
+
+.message pre.environment-fourth.prefixed.line_numbers code ol li:before {
+  border-right-color: rgba(0, 89, 85, .5)
+}
+
+.message pre.environment-fifth {
+  background: rgba(255, 222, 255, .5);
+  color: #606
+}
+
+.message pre.environment-fifth code,
+.message pre.environment-fifth.prefixed code ol li:before {
+  color: #606
+}
+
+.message pre.environment-fifth.prefixed.line_numbers code ol li:before {
+  border-right-color: rgba(102, 0, 102, .5)
+}

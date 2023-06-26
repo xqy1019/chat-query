@@ -1,0 +1,15 @@
+{
+  "WELCOME CHAT QUERY": "欢迎聊天查询",
+  "GET STRAT": "获取开始",
+  "Data Model": "数据模型",
+  "Create New ERD Model": "创建新的ERD模型",
+  "Create ERD Model from Example": "从示例中创建ERD模型",
+  "OR": "或者",
+  "createdAt": "创建时间",
+  "updatedAt": "更新时间",
+  "Please Enter": "请输入",
+  "Select Model to Create": "选择模型新建",
+  "Run": "运行",
+  "Execution Successful": "执行成功",
+  "Query Generated for You": "已为你生成查询"
+}
