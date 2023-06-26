@@ -5,7 +5,7 @@ import axios from 'redaxios';
 const APi = axios.create({});
 
 export const backendApi = axios.create({
-    baseURL: '/backend',
+    baseURL:globalThis?.sessionStorage?.getItem("baseURL") || '/backend',
 });
 
 (() => {
