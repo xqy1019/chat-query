@@ -9,14 +9,19 @@ export const backendApi = axios.create({
 });
 
 (() => {
-    axios.get((process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001') + "/schema/all").then(
+  if (!sessionStorage.getItem("baseURL")) {
+    const url = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001'
+    axios.get((url) + "/schema/all").then(
         () => {
-        set(backendApi.defaults, "baseURL", process.env.NEXT_PUBLIC_BACKEND_URL)
+          set(backendApi.defaults, "baseURL", url)
+          sessionStorage.setItem("baseURL", url)
         },
         err => {
-            console.log(err);
+          console.log(err);
+          sessionStorage.setItem("baseURL",'/backend')
         }
     );
+  }
 })();
 
 export default APi;
