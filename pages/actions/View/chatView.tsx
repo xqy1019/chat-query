@@ -3,7 +3,9 @@ import { IconCode, IconEye, IconSend } from '@arco-design/web-react/icon';
 import React, { ReactElement, memo, useCallback, useRef, useState } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live-runner';
 import * as styledComponents from 'styled-components';
-import * as ReactECharts from 'echarts-for-react';
+import * as echarts from 'echarts';
+import ReactDOM from 'react-dom';
+import ReactECharts from 'echarts-for-react';
 import AI from '@/components/AITool';
 import useSWRMutation from 'swr/mutation';
 import getView from '@/client/api/getView';
@@ -80,8 +82,14 @@ export function ChatView({
                                     data: props,
                                     import: {
                                         react: React,
+                                        'react-dom': ReactDOM,
                                         'styled-components': styledComponents,
                                         'echarts-for-react': ReactECharts,
+                                        echarts: {
+                                            default: echarts,
+                                            echarts: echarts,
+                                            ...echarts,
+                                        },
                                     },
                                 }}
                             >
