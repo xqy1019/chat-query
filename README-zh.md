@@ -7,7 +7,11 @@
 
 ## 演示
 
-> [view](https://chat-quey.netlify.app/)
+> [view](https://chat-query.netlify.app/) **由于netlify网络限制问题，请尽量选择一下模式:**
+
++ 选择网站设置 ![Choose website settings](./public/image.png)
++ 允许不安全内容 ![Allow Unsafe](./public/image1.png)
+
 > [demo](https://cdn.glitch.me/fd139a45-4a65-41b6-9634-41617ab20cdc/%E6%BC%94%E7%A4%BA.gif?v=1686907695067)
 
 + **功能特点🐂：**

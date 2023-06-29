@@ -5,8 +5,10 @@
 > Chat-Query is a data query tool based on metadata models and AI technology, enabling natural language queries.
 
 ## Demo
+> [view](https://chat-query.netlify.app/) **Due to network restrictions on Netlify, please try to choose one of the following modes:**
 
-> [view](https://chat-quey.netlify.app/)
++ Choose website settings ![Choose website settings](./public/image.png)
++ Allow Unsafe Content ![Allow Unsafe](./public/image1.png)
 
 > [demo](https://cdn.glitch.me/fd139a45-4a65-41b6-9634-41617ab20cdc/%E6%BC%94%E7%A4%BA.gif?v=1686907695067)
 
