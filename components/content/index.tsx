@@ -7,7 +7,6 @@ import ReactFlow, {
     useEdgesState,
     addEdge,
 } from 'reactflow';
-// 👇 you need to import the reactflow styles
 import 'reactflow/dist/style.css';
 
 const initialNodes = [];

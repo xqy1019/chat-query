@@ -479,7 +479,7 @@ const MessageItemHOC = ({ setShowQueriesList, activeDb, currentModels, activeMod
     return component;
 };
 
-export default function Actions(props) {
+export default function Actions() {
     const [graphs, setGraphs] = useState([]);
     const params = useSearchParams();
     const defaultId = params.get('id');

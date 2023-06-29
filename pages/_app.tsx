@@ -7,22 +7,21 @@ import '../styles/markdown/index.scss';
 import '../next-i18next.config.js';
 
 import GraphContainer from '../hooks/use-graph-state';
-import { ConfigProvider, ConfigContext } from '@arco-design/web-react';
+import { ConfigProvider } from '@arco-design/web-react';
 import { useState } from 'react';
 import { Spin } from '@arco-design/web-react';
 import { useEffect } from 'react';
-import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-function MyApp({ Component, pageProps }) {
-    const [local, setLocal] = useState();
+type MyAppProps = {
+    Component: React.FunctionComponent;
+    pageProps: Record<string, any>;
+};
+
+function MyApp({ Component, pageProps }: MyAppProps) {
+    const [local, setLocal] = useState<any>();
     const { i18n } = useTranslation();
     useEffect(() => {
-        // import('@arco-design/web-react/es/locale/en-US').then(lang => {
-        //     console.log(lang.default);
-        //     setLocal(lang.default);
-        // });
-        // console.log(i18n.language);
         if (i18n.language === 'en') {
             import('@arco-design/web-react/es/locale/en-US').then(lang => {
                 setLocal(lang.default);

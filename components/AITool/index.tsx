@@ -24,37 +24,31 @@ import React, {
     useState,
 } from 'react';
 import { IconRecord, IconRobot, IconSend, IconSwap, IconVoice } from '@arco-design/web-react/icon';
-import { getModel } from '@/utils/gpt';
 import OpenAI from '@/client/api/openAI';
 
-// import useSpeechToText from 'react-hook-speech-to-text';
 let useSpeechToText: any;
-// (async () => {
-//     if (process.browser) useSpeechToText = (await import('react-hook-speech-to-text')).default;
-// })();
 export interface ChatMessage {
     role: 'system' | 'user' | 'assistant';
     content: string;
 }
 
 const getQuestion = (question: string) => `${question}`;
-const model = getModel('gpt35');
 
 type AIProps = {
-    context: any;
+    context?: any;
     messageList: any[];
     setMessageList: (value: any[]) => any;
-    startView: number;
-    renderMessageItem: any;
-    doneFx: (message: string) => any;
+    startView?: number;
+    renderMessageItem?: any;
+    doneFx?: (message: string) => any;
     simpleMode?: string | true;
     simpleModeVisible?: boolean;
-    setSimpleModeVisible?: () => any;
-    welcome: ReactElement | string;
+    setSimpleModeVisible?: (flag?: boolean) => any;
+    welcome?: ReactElement | string;
     quickTip?: string[] | { value: string; name: string; [key: string]: any }[];
-    searchFlag: RegExp;
+    searchFlag?: RegExp;
     inputProps?: Record<string, any>;
-    SendButton: ({ inputRef }: { inputRef: any }) => JSX.Element;
+    SendButton?: ({ inputRef }: { inputRef: any }) => JSX.Element;
 };
 
 export function AIWrapper({
@@ -73,18 +67,13 @@ export function AIWrapper({
     inputProps = {},
     SendButton,
 }: AIProps) {
-    const input = useRef<HTMLInputElement>();
-    const panelRef = useRef<HTMLInputElement>();
-
-    const [currentAssistantMessage, setCurrentAssistantMessage] = useState('');
+    const input = useRef<any>();
+    const scrollContainer = useRef<any>();
     const [loading, setLoading] = useState(false);
-    const [_, refresh] = useReducer(state => state++, 0);
-    const scrollContainer = useRef();
-    const message = useRef([]);
-    const working = useRef(false);
-    const [Niche, setNiche] = useState('you');
-    const [tinking, setTinking] = useState(false);
 
+    // 发送信息事件和成功的事件
+    const [currentAssistantMessage, setCurrentAssistantMessage] = useState('');
+    const [tinking, setTinking] = useState(false); //假的加载
     const handleButtonClickSuccess = useEffect(() => {
         if (!currentAssistantMessage || loading) {
             return;
@@ -100,7 +89,6 @@ export function AIWrapper({
         setCurrentAssistantMessage('');
         // return clearContext;
     }, [currentAssistantMessage, loading]);
-
     const toView = useCallback(
         debounce(() => {
             scrollContainer &&
@@ -111,7 +99,6 @@ export function AIWrapper({
         }, 50),
         []
     );
-
     const handleButtonClick = useCallback(
         (message?: string, callBack?: (m: string) => void) => {
             const inputRef = input.current?.dom;
@@ -139,7 +126,7 @@ export function AIWrapper({
                         setLoading(false);
                         setTinking(false);
                         setTimeout(toView, 100);
-                    }, 2000);
+                    }, 1000);
                     setCurrentAssistantMessage(currentAssistantMessageStr);
                     callBack && callBack(currentAssistantMessageStr);
                     doneFx && doneFx(currentAssistantMessageStr);
@@ -164,18 +151,21 @@ export function AIWrapper({
         ]
     );
 
+    // 清除功能
     const clear = () => {
-        // clearContext().then(() => {
-        const inputRef = input.current.dom;
-        inputRef.value = '';
-        setMessageList(messageList.slice(0, startView));
-        setCurrentAssistantMessage('');
-        // });
+        const inputRef = get(input, 'current.dom');
+        if (inputRef) {
+            inputRef.value = '';
+            setMessageList(messageList.slice(0, startView));
+            setCurrentAssistantMessage('');
+        }
     };
-    const [visible, setVisible] = React.useState(false);
 
-    const user = {};
-
+    // 用户信息
+    const [Niche, setNiche] = useState('you');
+    const user: {
+        photoId?: string;
+    } = {};
     const userIcon = user?.photoId ? (
         `/api/v1/assets/${user?.photoId}`
     ) : (
@@ -187,30 +177,16 @@ export function AIWrapper({
         </Avatar>
     );
 
+    // 上下文传递
     useEffect(() => {
         context && context({ clear });
     }, [context]);
-    const RenderMessageItem = renderMessageItem || MessageItem;
 
-    const { t } = useTranslation('actions');
-    const animaeString = t(
-        !quickTip.length
-            ? 'Please input your question'
-            : 'Starting with "/", retrieve frequently asked questions'
-    );
-    const [placeholder, setPlaceholder] = useState('');
+    // 快捷功能
     const [isSearching, setSearching] = useState<string | false>(false);
-
     const quickTipData = useMemo(() => {
         const el = input.current?.dom;
         if (isSearching && el) {
-            console.log(
-                filter(quickTip, ({ value }: { value: string }) => {
-                    if (el) {
-                        return value.indexOf(isSearching.replace(searchFlag, '').trim()) !== -1;
-                    }
-                })
-            );
             return filter(quickTip, ({ value }: { value: string }) => {
                 if (el) {
                     return value.indexOf(isSearching.replace(searchFlag, '').trim()) !== -1;
@@ -221,6 +197,14 @@ export function AIWrapper({
         return [];
     }, [isSearching, quickTip, input]);
 
+    //动画
+    const { t } = useTranslation('actions');
+    const animaeString = t(
+        !quickTip.length
+            ? 'Please input your question'
+            : 'Starting with "/", retrieve frequently asked questions'
+    );
+    const [placeholder, setPlaceholder] = useState('');
     let timer = useRef<any>();
     useEffect(() => {
         timer.current && clearTimeout(timer.current);
@@ -243,6 +227,8 @@ export function AIWrapper({
         }
         return () => clearTimeout(timer.current);
     }, [timer, simpleModeVisible, animaeString]);
+
+    //语音功能
     const { error, interimResult, isRecording, results, startSpeechToText, stopSpeechToText } =
         useSpeechToText({
             continuous: true,
@@ -271,6 +257,7 @@ export function AIWrapper({
     }, [interimResult, beforeRecordValue]);
 
     const inputValue = input.current?.dom.value || '';
+    const RenderMessageItem = renderMessageItem || MessageItem;
 
     const inputNode = (
         <Input
@@ -441,14 +428,6 @@ export function AIWrapper({
                                     />
                                 </div>
                             ) : (
-                                // <div>
-                                //     {
-                                //         <RenderMessageItem
-                                //             message={currentAssistantMessage}
-                                //             role="assistant"
-                                //         />
-                                //     }
-                                // </div>
                                 <div className="my-[20px]">
                                     <div
                                         className={`flex gap-3 p-4 box-border  shadow mx-[5px] rounded transition-colors mt-[20px] font-hm ${'bg-[var(--white-bg)] text-[#333]'}`}

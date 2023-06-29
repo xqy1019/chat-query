@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { Ref } from 'react';
 import { Form, Input, Checkbox, Button, Radio } from '@arco-design/web-react';
 import { useTranslation } from 'react-i18next';
 
 const FormItem = Form.Item;
 const RadioGroup = Radio.Group;
 
-function ActionForm({ form, initialValues = {} }) {
+type ActionFormProp = {
+    form: Ref<any>;
+    initialValues: Record<string, any>;
+};
+
+function ActionForm({ form, initialValues }: ActionFormProp) {
     const { t } = useTranslation('actionForm');
     return (
         <Form autoComplete="off" form={form} initialValues={initialValues}>

@@ -321,7 +321,7 @@ export function QueriesList({
 
 function QueriesRender({ modelId, refresh }: { modelId: string; refresh?: boolean }) {
     const { data, isLoading, mutate } = useSWR('all_query_for_Schema', () => {
-        return modelId && ConnectDb.getQueries(modelId);
+        return modelId ? ConnectDb.getQueries(modelId) : undefined;
     });
 
     useEffect(() => {
@@ -377,14 +377,19 @@ export default function QueriesPage() {
     const params = useSearchParams();
     const { t } = useTranslation('queriesList');
     const { t: ct } = useTranslation();
+    const id = params.get('id');
 
     return (
         <>
             <Head>
                 <title>CHAT QUERY</title>
-                <meta name="description" content={ct('Data Query Based on Data Model and AI')} />
+                <meta
+                    name="description"
+                    content={ct('Data Query Based on Data Model and AI') as string}
+                />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+
             <ListNav
                 customNode={[
                     <Link
@@ -409,6 +414,7 @@ export default function QueriesPage() {
                 importDBML={undefined}
                 handlerImportGraph={undefined}
             />
+
             <Layout className="overflow-auto mt-[85px]">
                 <div
                     className="w-[85%] m-auto"
@@ -416,7 +422,7 @@ export default function QueriesPage() {
                         height: 'calc(100vh - 120px)',
                     }}
                 >
-                    <QueriesRender modelId={params.get('id')} />
+                    {id && <QueriesRender modelId={id} />}
                 </div>
             </Layout>
         </>

@@ -16,7 +16,10 @@ function Home() {
         <>
             <Head>
                 <title>CHAT QUERY</title>
-                <meta name="description" content={t('Data Query Based on Data Model and AI')} />
+                <meta
+                    name="description"
+                    content={t('Data Query Based on Data Model and AI') as string}
+                />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
