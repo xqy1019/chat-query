@@ -25,6 +25,7 @@ import React, {
 } from 'react';
 import { IconRecord, IconRobot, IconSend, IconSwap, IconVoice } from '@arco-design/web-react/icon';
 import { getModel } from '@/utils/gpt';
+import OpenAI from '@/client/api/openAI';
 
 // import useSpeechToText from 'react-hook-speech-to-text';
 let useSpeechToText: any;
@@ -100,6 +101,17 @@ export function AIWrapper({
         // return clearContext;
     }, [currentAssistantMessage, loading]);
 
+    const toView = useCallback(
+        debounce(() => {
+            scrollContainer &&
+                scrollContainer?.current?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'end',
+                });
+        }, 50),
+        []
+    );
+
     const handleButtonClick = useCallback(
         (message?: string, callBack?: (m: string) => void) => {
             const inputRef = input.current?.dom;
@@ -107,108 +119,40 @@ export function AIWrapper({
             if (!inputValue) {
                 return;
             }
-            setLoading(true);
-            // @ts-ignore
-            inputRef.value = '';
-            setMessageList([
+            const initMessageList = [
                 ...messageList,
                 {
                     role: 'user',
                     content: inputValue,
                 },
-            ]);
-
-            const toView = debounce(() => {
-                scrollContainer &&
-                    scrollContainer?.current?.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'end',
-                    });
-            }, 50);
+            ];
+            setMessageList(initMessageList);
+            // @ts-ignore
+            inputRef.value = '';
+            setLoading(true);
             toView();
-            fetch('/openai/v1/chat/completions', {
-                headers: {
-                    'cache-control': 'no-cache',
-                    'Content-Type': 'application/json',
-                    Accept: 'text/event-stream',
+            OpenAI.request(
+                initMessageList,
+                currentAssistantMessageStr => {
+                    setTinking(true);
+                    setTimeout(() => {
+                        setLoading(false);
+                        setTinking(false);
+                        setTimeout(toView, 100);
+                    }, 2000);
+                    setCurrentAssistantMessage(currentAssistantMessageStr);
+                    callBack && callBack(currentAssistantMessageStr);
+                    doneFx && doneFx(currentAssistantMessageStr);
+                    console.log(currentAssistantMessageStr, 'currentAssistantMessageStr');
                 },
-                body: JSON.stringify({
-                    messages: [
-                        ...messageList,
-                        {
-                            role: 'user',
-                            content: inputValue,
-                        },
-                    ],
-                    model: model.name,
-                    temperature: model.temperature,
-                    frequency_penalty: model.frequency_penalty,
-                    presence_penalty: model.presence_penalty,
-                    stream: true,
-                }),
-                method: 'POST',
-            }).then(async response => {
-                if (!response.ok) {
-                    // throw new Error(response.statusText);
+                setCurrentAssistantMessage,
+                () => {
                     Notification.error({
                         title: 'No Response',
                         content: undefined,
                     });
-                    // setLoading(false);
                 }
-                // response.text().then((text) => {
-                //   setCurrentAssistantMessage(text);
-                // });
-                const data = response.body;
-                if (!data) {
-                    Notification.error({
-                        title: 'No data',
-                        content: undefined,
-                    });
-                    // setLoading(false);
-                }
-                const reader = data.getReader();
-                const decoder = new TextDecoder('utf-8');
-                let done = false;
-
-                let currentAssistantMessageStr = currentAssistantMessage;
-                while (!done) {
-                    const content = await reader.read();
-                    const { done: readerDone, value } = content;
-
-                    if (value) {
-                        const char = decoder.decode(value);
-                        if (char === '\n' && currentAssistantMessageStr.endsWith('\n')) {
-                            continue;
-                        }
-                        const codeBlocks = char.trim().split(`
-
-`);
-                        for (let i = 0; i < codeBlocks.length - 1; i++) {
-                            currentAssistantMessageStr += get(
-                                JSON.parse(codeBlocks[i].replace(/^data:/g, '').trim()),
-                                'choices[0].delta.content',
-                                ''
-                            );
-                            setCurrentAssistantMessage(currentAssistantMessageStr);
-                        }
-                        // if (char) {
-                        //     currentAssistantMessageStr += char;
-                        //     setCurrentAssistantMessage(currentAssistantMessageStr);
-                        // }
-                    }
-                    done = readerDone;
-                }
-                setTinking(true);
-                setTimeout(() => {
-                    setLoading(false);
-                    setTinking(false);
-                }, 2000);
-                callBack && callBack(currentAssistantMessageStr);
-                doneFx && doneFx(currentAssistantMessageStr);
-                console.log(currentAssistantMessageStr, 'currentAssistantMessageStr');
-                setTimeout(toView, 100);
-            });
+            );
         },
         [
             loading,

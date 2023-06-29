@@ -12,6 +12,7 @@
     "@arco-design/web-react": "^2.45.0",
     "@dbml/core": "^2.5.1",
     "@digitalocean/do-markdownit": "^1.9.0",
+    "@microsoft/fetch-event-source": "^2.0.1",
     "@monaco-editor/react": "^4.4.5",
     "@next/font": "13.1.6",
     "@types/lodash": "^4.14.191",
