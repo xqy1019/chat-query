@@ -209,6 +209,9 @@ i18n.use(LanguageDetector)
                     'please enter query name': '请输入查询名称',
                     name: '名称',
                 },
+                chatView: {
+                    'component display': '组件显示',
+                },
             },
         },
         fallbackLng: 'en',

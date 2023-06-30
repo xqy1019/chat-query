@@ -368,7 +368,7 @@ const MessageItemHOC = ({ setShowQueriesList, activeDb, currentModels, activeMod
                             })
                         )}
                         {size(sql) ? (
-                            [
+                            <>
                                 <FormItem key="1">
                                     <Button
                                         type="primary"
@@ -456,11 +456,11 @@ const MessageItemHOC = ({ setShowQueriesList, activeDb, currentModels, activeMod
                                         {t('run')}
                                     </Button>
                                     {contextHolder}
-                                </FormItem>,
+                                </FormItem>
                                 <div className="w-full" key="preViewData">
                                     <DataTable data={preViewData} />
-                                </div>,
-                            ]
+                                </div>
+                            </>
                         ) : (
                             <Empty
                                 description={t('Error in query')}

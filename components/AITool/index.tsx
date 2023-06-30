@@ -268,7 +268,7 @@ export function AIWrapper({
             height={56}
             className="overflow-hidden  shadow-md simple-mode  shadow-cyan-500/30"
             autoFocus
-            onPressEnter={() => handleButtonClick()}
+            onPressEnter={() => !SendButton && handleButtonClick()}
             value={inputValue}
             onChange={value => {
                 const el = input.current?.dom;
