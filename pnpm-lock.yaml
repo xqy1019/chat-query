@@ -143,6 +143,9 @@ dependencies:
   unstated-next:
     specifier: ^1.1.0
     version: 1.1.0
+  wasm-jseval:
+    specifier: ^0.1.2
+    version: 0.1.2
 
 devDependencies:
   postcss:
@@ -5932,6 +5935,10 @@ packages:
   /void-elements@3.1.0:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /wasm-jseval@0.1.2:
+    resolution: {integrity: sha512-dYcNwXWU5H39j4kuS6n6uaanV9i+CXBRnwxEkrxI29RRg3YLSBNnwxS3LyavHv7MM0vYngnix3WUemeRHaxGBQ==}
     dev: false
 
   /which-boxed-primitive@1.0.2:
