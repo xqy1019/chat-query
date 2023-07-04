@@ -89,8 +89,12 @@ body[arco-theme=dark] {
   .view-lines,
   .decorationsOverviewRuler,
   .invisible {
-    background: rgb(233, 242, 241);
+    background: rgb(233, 242, 241,0.4);
   }
+
+  .selected-text{
+background:rgba(255, 166, 0, 0.53) !important;
+    }
 
   .slider.slider {
     border-radius: 5px;

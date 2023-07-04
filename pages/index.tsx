@@ -10,7 +10,6 @@ import Link from 'next/link';
 import { useTranslation, Trans } from 'react-i18next';
 
 function Home() {
-    const { data } = useSWR('getTableList', () => getSchema.getTableList({ type: 'schema' }));
     const { t } = useTranslation();
     return (
         <>

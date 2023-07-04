@@ -11,10 +11,10 @@ export interface View {
 }
 
 export default class getView {
-  static getViewComponent(params: {
-    props: Record<string, any>,
-    need: string
-  }) {
+    static getViewComponent(params: { props: Record<string, any>; need: string }) {
         return backendApi.post('/openAi/api/reactLive', params);
+    }
+    static getViewFunction(params: { data: Record<string, any>; need: string }) {
+        return backendApi.post('/openAi/api/code', params);
     }
 }
